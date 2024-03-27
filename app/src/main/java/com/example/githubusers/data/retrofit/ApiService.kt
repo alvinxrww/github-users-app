@@ -6,8 +6,12 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
+
+    @GET("users")
+    fun getUsers(): Call<List<UserItem>>
+
     @GET("search/users")
-    fun getUsers(
+    fun getUsersByUname(
         @Query("q") username: String
     ): Call<UserResponse>
 

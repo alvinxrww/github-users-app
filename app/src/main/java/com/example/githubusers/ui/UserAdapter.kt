@@ -19,6 +19,7 @@ class UserAdapter : ListAdapter<UserItem, UserAdapter.ListViewHolder>(DIFF_CALLB
         val user = getItem(position)
         Glide.with(holder.itemView.context)
             .load(user.avatarUrl)
+            .circleCrop()
             .into(holder.binding.imgItemPhoto)
 
         holder.binding.tvItemUsername.text = user.login
