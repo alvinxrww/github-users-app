@@ -2,6 +2,7 @@ package com.example.githubusers.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -31,6 +32,19 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
+        }
+
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    val userInput = searchView.text
+                    searchBar.setText(userInput)
+                    searchView.hide()
+                    Toast.makeText(this@MainActivity, searchView.text, Toast.LENGTH_SHORT).show()
+                    false
+                }
         }
     }
 
