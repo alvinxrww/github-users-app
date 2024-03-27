@@ -1,4 +1,4 @@
-package com.example.restaurantreview.ui
+package com.example.githubusers.ui
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -30,12 +30,12 @@ class MainViewModel : ViewModel() {
     }
 
     init {
-        findUsers()
+        findUsers(INIT_USERNAME)
     }
 
-    private fun findUsers() {
+    private fun findUsers(username: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getUsers(INIT_USERNAME)
+        val client = ApiConfig.getApiService().getUsers(username)
         client.enqueue(object : Callback<UserResponse> {
             override fun onResponse(
                 call: Call<UserResponse>,
