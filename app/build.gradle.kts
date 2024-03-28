@@ -59,4 +59,6 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.viewpager2)
+
 }

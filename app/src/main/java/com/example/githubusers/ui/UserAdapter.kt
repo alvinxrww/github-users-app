@@ -1,7 +1,9 @@
 package com.example.githubusers.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +24,21 @@ class UserAdapter : ListAdapter<UserItem, UserAdapter.ListViewHolder>(DIFF_CALLB
             .circleCrop()
             .into(holder.binding.imgItemPhoto)
 
-        holder.binding.tvItemUsername.text = user.login
+        val username = user.login
+        val image = user.avatarUrl
+        holder.binding.tvItemUsername.text = username
+        holder.itemView.setOnClickListener {
+//            Toast.makeText(
+//                holder.itemView.context,
+//                "You chose $username",
+//                Toast.LENGTH_SHORT
+//            ).show()
+
+            val detailIntent = Intent(holder.itemView.context, DetailsActivity::class.java)
+            detailIntent.putExtra(DetailsActivity.USERNAME, username)
+            detailIntent.putExtra(DetailsActivity.IMAGE, image)
+            holder.itemView.context.startActivity(detailIntent)
+        }
     }
 
     class ListViewHolder(var binding: UserRowItemBinding) : RecyclerView.ViewHolder(binding.root)

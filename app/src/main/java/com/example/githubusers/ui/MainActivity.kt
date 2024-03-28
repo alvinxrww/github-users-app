@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                         val username = textView.text.toString()
                         mainViewModel.findUsers(username)
+                        searchBar.setText(username)
                         searchView.hide()
                         true
                     } else {
