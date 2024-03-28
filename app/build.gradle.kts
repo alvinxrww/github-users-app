@@ -29,9 +29,11 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
+            buildConfigField("String", "API_TOKEN", "\"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\"")
         }
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
+            buildConfigField("String", "API_TOKEN", "\"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\"")
         }
     }
     compileOptions {
@@ -60,5 +62,5 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.viewpager2)
-
+    implementation(libs.androidx.fragment.ktx)
 }

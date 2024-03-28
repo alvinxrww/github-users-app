@@ -28,11 +28,11 @@ class UserAdapter : ListAdapter<UserItem, UserAdapter.ListViewHolder>(DIFF_CALLB
         val image = user.avatarUrl
         holder.binding.tvItemUsername.text = username
         holder.itemView.setOnClickListener {
-//            Toast.makeText(
-//                holder.itemView.context,
-//                "You chose $username",
-//                Toast.LENGTH_SHORT
-//            ).show()
+            Toast.makeText(
+                holder.itemView.context,
+                "You chose $username",
+                Toast.LENGTH_SHORT
+            ).show()
 
             val detailIntent = Intent(holder.itemView.context, DetailsActivity::class.java)
             detailIntent.putExtra(DetailsActivity.USERNAME, username)

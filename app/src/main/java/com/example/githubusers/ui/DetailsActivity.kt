@@ -29,15 +29,19 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val image = intent.getStringExtra(IMAGE)
+        val username = intent.getStringExtra(USERNAME)
+
         Glide.with(binding.root)
-            .load(intent.getStringExtra(IMAGE))
+            .load(image)
             .circleCrop()
             .into(binding.imgItemPhoto)
-        binding.tvItemUsername.text = intent.getStringExtra(USERNAME)
+        binding.tvItemUsername.text = username
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
+        sectionsPagerAdapter.username = username!!
         val tabs: TabLayout = binding.tabs
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
