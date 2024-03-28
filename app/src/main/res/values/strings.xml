@@ -3,4 +3,9 @@
 
     <string name="tab_title_1">Following</string>
     <string name="tab_title_2">Followers</string>
+    <string name="search_hint">Search for users</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="folls">Folls</string>
+    <string name="profile_picture">profile picture</string>
 </resources>

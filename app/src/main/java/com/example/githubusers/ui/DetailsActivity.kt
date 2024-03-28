@@ -9,7 +9,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.githubusers.R
 import com.example.githubusers.data.response.UserDetailResponse
-import com.example.githubusers.data.response.UserItem
 import com.example.githubusers.databinding.ActivityDetailsBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -73,7 +72,8 @@ class DetailsActivity : AppCompatActivity() {
             .into(binding.imgItemPhoto)
         binding.tvItemUsername.text = userName
         binding.tvItemName.text = name
-        binding.tvItemFolls.text = "$followingCount following               |               $followersCount followers"
+        "$followingCount following               |               $followersCount followers".
+        also { binding.tvItemFolls.text = it }
     }
 
     private fun showLoading(isLoading: Boolean) {
