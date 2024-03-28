@@ -1,6 +1,5 @@
 package com.example.githubusers.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,9 +23,8 @@ class DetailsViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    companion object {
-        private const val TAG = "MainViewModel"
-    }
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
 
     init {
         getDetails(username)
@@ -43,14 +41,12 @@ class DetailsViewModel : ViewModel() {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _details.value = response.body()
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<UserDetailResponse>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
+                _errorMessage.value = "Failed to fetch users: ${t.message}"
             }
         })
     }

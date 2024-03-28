@@ -2,6 +2,7 @@ package com.example.githubusers.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -39,11 +40,16 @@ class DetailsActivity : AppCompatActivity() {
             setDetailsData(detail)
         }
 
-        val username = intent.getStringExtra(USERNAME)
-        detailsViewModel.username = username!!
         detailsViewModel.isLoading.observe(this) {
             showLoading(it)
         }
+
+        detailsViewModel.errorMessage.observe(this) { errorMessage ->
+            Toast.makeText(binding.root.context, errorMessage, Toast.LENGTH_SHORT).show()
+        }
+
+        val username = intent.getStringExtra(USERNAME)
+        detailsViewModel.username = username!!
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         val viewPager: ViewPager2 = binding.viewPager

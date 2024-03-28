@@ -1,6 +1,5 @@
 package com.example.githubusers.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,9 +17,8 @@ class MainViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    companion object {
-        private const val TAG = "MainViewModel"
-    }
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
 
     init {
         findUsers()
@@ -38,13 +36,13 @@ class MainViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _users.value = response.body()
                 } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
+                    _errorMessage.value = "Failed to fetch users: ${response.message()}"
                 }
             }
 
             override fun onFailure(call: Call<List<UserItem>>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
+                _errorMessage.value = "Failed to fetch users: ${t.message}"
             }
         })
     }
@@ -61,13 +59,13 @@ class MainViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _users.value = response.body()?.items
                 } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
+                    _errorMessage.value = "Failed to fetch users: ${response.message()}"
                 }
             }
 
             override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
+                _errorMessage.value = "Failed to fetch users: ${t.message}"
             }
         })
     }
