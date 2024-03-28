@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.githubusers.data.response.UserItem
+import com.example.githubusers.data.response.UserResponse
 import com.example.githubusers.data.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,6 +49,29 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<UserItem>>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    fun findUsers(username: String) {
+        _isLoading.value = true
+        val client = ApiConfig.getApiService().getUsersByUname(username)
+        client.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(
+                call: Call<UserResponse>,
+                response: Response<UserResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _users.value = response.body()?.items
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 _isLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }

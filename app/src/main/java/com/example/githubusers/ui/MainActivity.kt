@@ -2,6 +2,7 @@ package com.example.githubusers.ui
 
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -39,11 +40,14 @@ class MainActivity : AppCompatActivity() {
             searchView
                 .editText
                 .setOnEditorActionListener { textView, actionId, event ->
-                    val userInput = searchView.text
-                    searchBar.setText(userInput)
-                    searchView.hide()
-                    Toast.makeText(this@MainActivity, searchView.text, Toast.LENGTH_SHORT).show()
-                    false
+                    if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                        val username = textView.text.toString()
+                        mainViewModel.findUsers(username)
+                        searchView.hide()
+                        true
+                    } else {
+                        false
+                    }
                 }
         }
     }
