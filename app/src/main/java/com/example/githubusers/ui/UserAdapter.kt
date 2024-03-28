@@ -25,7 +25,6 @@ class UserAdapter : ListAdapter<UserItem, UserAdapter.ListViewHolder>(DIFF_CALLB
             .into(holder.binding.imgItemPhoto)
 
         val username = user.login
-        val image = user.avatarUrl
         holder.binding.tvItemUsername.text = username
         holder.itemView.setOnClickListener {
             Toast.makeText(
@@ -36,7 +35,6 @@ class UserAdapter : ListAdapter<UserItem, UserAdapter.ListViewHolder>(DIFF_CALLB
 
             val detailIntent = Intent(holder.itemView.context, DetailsActivity::class.java)
             detailIntent.putExtra(DetailsActivity.USERNAME, username)
-            detailIntent.putExtra(DetailsActivity.IMAGE, image)
             holder.itemView.context.startActivity(detailIntent)
         }
     }

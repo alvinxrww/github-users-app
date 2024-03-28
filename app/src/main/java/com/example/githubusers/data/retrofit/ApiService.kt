@@ -1,7 +1,6 @@
 package com.example.githubusers.data.retrofit
 
-import com.example.githubusers.BuildConfig
-import com.example.githubusers.data.response.UserDetailDesponse
+import com.example.githubusers.data.response.UserDetailResponse
 import com.example.githubusers.data.response.UserItem
 import com.example.githubusers.data.response.UserResponse
 import retrofit2.Call
@@ -13,7 +12,7 @@ interface ApiService {
     fun getUsers(): Call<List<UserItem>>
 
     @GET("users/{username}")
-    fun getDetailUser(@Path("username") username: String): Call<UserDetailDesponse>
+    fun getDetailUser(@Path("username") username: String): Call<UserDetailResponse>
 
     @GET("search/users")
     fun getUsersByUname(
