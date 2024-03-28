@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubusers.data.response.UserItem
-import com.example.githubusers.databinding.FragmentFollowingBinding
+import com.example.githubusers.databinding.FragmentFollowBinding
 
-class FollowingFragment : Fragment() {
-    private val followingViewModel: FollowingViewModel by viewModels<FollowingViewModel>()
-    private var _binding: FragmentFollowingBinding? = null
+class FollowFragment : Fragment() {
+    private val followViewModel: FollowViewModel by viewModels<FollowViewModel>()
+    private var _binding: FragmentFollowBinding? = null
     private val binding get() = _binding!!
 
     companion object {
@@ -31,17 +31,15 @@ class FollowingFragment : Fragment() {
             position = it.getInt(ARG_POSITION)
             username = it.getString(ARG_USERNAME)!!
 
-            followingViewModel.username = username
+            followViewModel.username = username
         }
         if (position == 1){
-            binding.testUsername.text = "Get Following $username"
-            followingViewModel.findFollowing(username)
+            followViewModel.findFollowing(username)
         } else {
-            binding.testUsername.text = "Get Follower $username"
-            followingViewModel.findFollower(username)
+            followViewModel.findFollower(username)
         }
 
-        followingViewModel.followings.observe(viewLifecycleOwner) { user ->
+        followViewModel.followings.observe(viewLifecycleOwner) { user ->
             setUserData(user)
         }
 
@@ -51,7 +49,7 @@ class FollowingFragment : Fragment() {
         val itemDecoration = DividerItemDecoration(requireActivity(), layoutManager.orientation)
         binding.rvFollowing.addItemDecoration(itemDecoration)
 
-        followingViewModel.isLoading.observe(viewLifecycleOwner) {
+        followViewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
     }
@@ -60,7 +58,7 @@ class FollowingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFollowingBinding.inflate(inflater, container, false)
+        _binding = FragmentFollowBinding.inflate(inflater, container, false)
         return binding.root
     }
 

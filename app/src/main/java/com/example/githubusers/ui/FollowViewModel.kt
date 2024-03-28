@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowingViewModel : ViewModel() {
+class FollowViewModel : ViewModel() {
     var username = ""
 
     private val _followings = MutableLiveData<List<UserItem>>()
@@ -20,7 +20,7 @@ class FollowingViewModel : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
     companion object {
-        private const val TAG = "FollowingViewModel"
+        private const val TAG = "FollowViewModel"
     }
 
     fun findFollowing(username: String) {

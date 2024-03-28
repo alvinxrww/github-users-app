@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.githubusers.BuildConfig
+import okhttp3.Interceptor
 
 class ApiConfig {
     companion object{
@@ -13,6 +14,13 @@ class ApiConfig {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+            }
+            val authInterceptor = Interceptor { chain ->
+                val req = chain.request()
+                val requestHeaders = req.newBuilder()
+                    .addHeader("Authorization", BuildConfig.API_TOKEN)
+                    .build()
+                chain.proceed(requestHeaders)
             }
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
