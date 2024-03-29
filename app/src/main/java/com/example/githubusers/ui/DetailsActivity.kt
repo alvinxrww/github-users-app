@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.githubusers.R
+import com.example.githubusers.data.database.FavoriteUser
 import com.example.githubusers.data.response.UserDetailResponse
 import com.example.githubusers.databinding.ActivityDetailsBinding
 import com.google.android.material.tabs.TabLayout
@@ -17,7 +18,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
     private val detailsViewModel: DetailsViewModel by viewModels<DetailsViewModel>()
-
 
     companion object {
         const val USERNAME = "username"
@@ -63,6 +63,12 @@ class DetailsActivity : AppCompatActivity() {
         }.attach()
 
         supportActionBar?.elevation = 0f
+
+        binding.favoriteButton.setOnClickListener {
+            val image = detailsViewModel.details.value?.avatarUrl
+            val favoriteViewModel = FavoriteViewModel(this.application)
+            favoriteViewModel.insert(FavoriteUser(username, image))
+        }
     }
 
     private fun setDetailsData(details: UserDetailResponse) {
@@ -78,8 +84,9 @@ class DetailsActivity : AppCompatActivity() {
             .into(binding.imgItemPhoto)
         binding.tvItemUsername.text = userName
         binding.tvItemName.text = name
-        "$followingCount following               |               $followersCount followers".
-        also { binding.tvItemFolls.text = it }
+        "$followingCount following               |               $followersCount followers".also {
+            binding.tvItemFolls.text = it
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
