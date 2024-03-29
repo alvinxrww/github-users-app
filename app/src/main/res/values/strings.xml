@@ -8,4 +8,5 @@
     <string name="username">Username</string>
     <string name="folls">Folls</string>
     <string name="profile_picture">profile picture</string>
+    <string name="add_to_favorite_button">Add to favorite button</string>
 </resources>
