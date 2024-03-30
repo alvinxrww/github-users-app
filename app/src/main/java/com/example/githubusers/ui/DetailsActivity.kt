@@ -17,7 +17,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
+    private lateinit var favoriteViewModel: FavoriteViewModel
     private val detailsViewModel: DetailsViewModel by viewModels<DetailsViewModel>()
+//    private val favoriteViewModel: FavoriteViewModel by viewModels<FavoriteViewModel>()
 
     companion object {
         const val USERNAME = "username"
@@ -51,6 +53,25 @@ class DetailsActivity : AppCompatActivity() {
         val username = intent.getStringExtra(USERNAME)
         detailsViewModel.username = username!!
 
+        favoriteViewModel = FavoriteViewModel(this.application)
+        favoriteViewModel.isFavorite(username).observe(this) { isFavorite ->
+            if (isFavorite) {
+                binding.favoriteButton.setImageResource(R.drawable.ic_favorite)
+            } else {
+                binding.favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
+            }
+        }
+
+        binding.favoriteButton.setOnClickListener {
+            val image = detailsViewModel.details.value?.avatarUrl
+            val favoriteUser = FavoriteUser(username, image)
+            if (favoriteViewModel.isFavorite(username).value == true) {
+                favoriteViewModel.delete(favoriteUser)
+            } else {
+                favoriteViewModel.insert(favoriteUser)
+            }
+        }
+
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         val viewPager: ViewPager2 = binding.viewPager
 
@@ -63,12 +84,6 @@ class DetailsActivity : AppCompatActivity() {
         }.attach()
 
         supportActionBar?.elevation = 0f
-
-        binding.favoriteButton.setOnClickListener {
-            val image = detailsViewModel.details.value?.avatarUrl
-            val favoriteViewModel = FavoriteViewModel(this.application)
-            favoriteViewModel.insert(FavoriteUser(username, image))
-        }
     }
 
     private fun setDetailsData(details: UserDetailResponse) {

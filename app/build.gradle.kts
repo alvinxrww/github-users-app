@@ -31,11 +31,11 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "API_TOKEN", "\"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\"")
+            buildConfigField("String", "API_TOKEN", "\"token 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\"")
         }
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "API_TOKEN", "\"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\"")
+            buildConfigField("String", "API_TOKEN", "\"token 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\"")
         }
     }
     compileOptions {
@@ -66,6 +66,6 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation("androidx.room:room-runtime:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 }

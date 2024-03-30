@@ -2,13 +2,14 @@ package com.example.githubusers.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.example.githubusers.data.database.FavoriteUser
 import com.example.githubusers.data.database.FavoriteUserDao
 import com.example.githubusers.data.database.FavoriteUserRoomDatabase
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class FavoriteUserRepository(application: Application) {
+class FavoriteUserRepository(application: Application): ViewModel() {
     private val mFavoriteUserDao: FavoriteUserDao
     private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
     init {
@@ -24,5 +25,9 @@ class FavoriteUserRepository(application: Application) {
     }
     fun update(favoriteUser: FavoriteUser) {
         executorService.execute { mFavoriteUserDao.update(favoriteUser) }
+    }
+
+    fun getFavoriteUserByUsername(username: String): LiveData<FavoriteUser> {
+        return mFavoriteUserDao.getFavoriteUserByUsername(username)
     }
 }
