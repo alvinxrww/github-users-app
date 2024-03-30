@@ -19,7 +19,8 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var favoriteViewModel: FavoriteViewModel
     private val detailsViewModel: DetailsViewModel by viewModels<DetailsViewModel>()
-//    private val favoriteViewModel: FavoriteViewModel by viewModels<FavoriteViewModel>()
+
+    private var favoriteStatus = false
 
     companion object {
         const val USERNAME = "username"
@@ -55,6 +56,7 @@ class DetailsActivity : AppCompatActivity() {
 
         favoriteViewModel = FavoriteViewModel(this.application)
         favoriteViewModel.isFavorite(username).observe(this) { isFavorite ->
+            favoriteStatus = isFavorite
             if (isFavorite) {
                 binding.favoriteButton.setImageResource(R.drawable.ic_favorite)
             } else {
@@ -65,10 +67,13 @@ class DetailsActivity : AppCompatActivity() {
         binding.favoriteButton.setOnClickListener {
             val image = detailsViewModel.details.value?.avatarUrl
             val favoriteUser = FavoriteUser(username, image)
-            if (favoriteViewModel.isFavorite(username).value == true) {
+
+            if (favoriteStatus) {
                 favoriteViewModel.delete(favoriteUser)
+                binding.favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
             } else {
                 favoriteViewModel.insert(favoriteUser)
+                binding.favoriteButton.setImageResource(R.drawable.ic_favorite)
             }
         }
 
