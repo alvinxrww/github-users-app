@@ -16,17 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <ImageView
             android:id="@+id/favorite_button"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_favorite_bordered"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/add_to_favorite_button"
-            app:maxImageSize="32dp"
+            android:src="@drawable/ic_favorite_bordered"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxImageSize="32dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -61,7 +61,6 @@
             android:id="@+id/tv_item_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/username"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -74,7 +73,6 @@
             android:id="@+id/tv_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/name"
             android:textColor="#FFFFFF"
             android:textSize="18sp"

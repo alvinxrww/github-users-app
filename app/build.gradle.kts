@@ -31,11 +31,11 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "API_TOKEN", "\"token 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\"")
+            buildConfigField("String", "API_TOKEN", "\"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\"")
         }
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "API_TOKEN", "\"token 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\"")
+            buildConfigField("String", "API_TOKEN", "\"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\"")
         }
     }
     compileOptions {

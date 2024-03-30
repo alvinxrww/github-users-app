@@ -1,5 +1,7 @@
 package com.example.githubusers.ui
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -57,23 +59,33 @@ class DetailsActivity : AppCompatActivity() {
         favoriteViewModel = FavoriteViewModel(this.application)
         favoriteViewModel.isFavorite(username).observe(this) { isFavorite ->
             favoriteStatus = isFavorite
+            val favoriteButton = binding.favoriteButton
             if (isFavorite) {
-                binding.favoriteButton.setImageResource(R.drawable.ic_favorite)
+                val red = Color.parseColor("#ED4956")
+                favoriteButton.setImageResource(R.drawable.ic_favorite)
+                favoriteButton.setColorFilter(red, PorterDuff.Mode.SRC_IN)
             } else {
-                binding.favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
+                val black = Color.parseColor("#000000")
+                favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
+                favoriteButton.setColorFilter(black, PorterDuff.Mode.SRC_IN)
             }
         }
 
         binding.favoriteButton.setOnClickListener {
             val image = detailsViewModel.details.value?.avatarUrl
             val favoriteUser = FavoriteUser(username, image)
+            val favoriteButton = binding.favoriteButton
 
             if (favoriteStatus) {
                 favoriteViewModel.delete(favoriteUser)
-                binding.favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
+                val black = Color.parseColor("#000000")
+                favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
+                favoriteButton.setColorFilter(black, PorterDuff.Mode.SRC_IN)
             } else {
                 favoriteViewModel.insert(favoriteUser)
-                binding.favoriteButton.setImageResource(R.drawable.ic_favorite)
+                val red = Color.parseColor("#ED4956")
+                favoriteButton.setImageResource(R.drawable.ic_favorite)
+                favoriteButton.setColorFilter(red, PorterDuff.Mode.SRC_IN)
             }
         }
 
