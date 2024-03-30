@@ -1,11 +1,11 @@
-package com.example.githubusers.data.repository
+package com.example.githubusers.data.local.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubusers.data.database.FavoriteUser
-import com.example.githubusers.data.database.FavoriteUserDao
-import com.example.githubusers.data.database.FavoriteUserRoomDatabase
+import com.example.githubusers.data.local.database.FavoriteUser
+import com.example.githubusers.data.local.database.FavoriteUserDao
+import com.example.githubusers.data.local.database.FavoriteUserRoomDatabase
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

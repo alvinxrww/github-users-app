@@ -1,4 +1,4 @@
-package com.example.githubusers.data.database
+package com.example.githubusers.data.local.database
 
 import android.content.Context
 import androidx.room.Database

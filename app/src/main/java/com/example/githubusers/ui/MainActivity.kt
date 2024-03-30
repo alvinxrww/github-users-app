@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubusers.data.database.SettingPreferences
-import com.example.githubusers.data.database.dataStore
-import com.example.githubusers.data.response.UserItem
+import com.example.githubusers.data.local.database.SettingPreferences
+import com.example.githubusers.data.local.database.dataStore
+import com.example.githubusers.data.remote.response.UserItem
 import com.example.githubusers.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

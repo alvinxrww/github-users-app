@@ -1,4 +1,4 @@
-package com.example.githubusers.data.database
+package com.example.githubusers.data.local.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

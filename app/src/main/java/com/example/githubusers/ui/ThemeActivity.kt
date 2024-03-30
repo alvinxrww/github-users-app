@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.example.githubusers.R
-import com.example.githubusers.data.database.SettingPreferences
-import com.example.githubusers.data.database.dataStore
+import com.example.githubusers.data.local.database.SettingPreferences
+import com.example.githubusers.data.local.database.dataStore
 import com.example.githubusers.databinding.ActivityThemeBinding
 import com.google.android.material.switchmaterial.SwitchMaterial
 

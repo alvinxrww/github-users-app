@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubusers.data.response.UserItem
+import com.example.githubusers.data.remote.response.UserItem
 import com.example.githubusers.databinding.FragmentFollowBinding
 
 class FollowFragment : Fragment() {

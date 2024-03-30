@@ -3,8 +3,8 @@ package com.example.githubusers.ui
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.example.githubusers.data.database.FavoriteUser
-import com.example.githubusers.data.repository.FavoriteUserRepository
+import com.example.githubusers.data.local.database.FavoriteUser
+import com.example.githubusers.data.local.repository.FavoriteUserRepository
 
 class FavoriteViewModel(application: Application) {
     private val mFavoriteUserRepository: FavoriteUserRepository =

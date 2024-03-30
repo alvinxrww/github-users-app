@@ -1,4 +1,4 @@
-package com.example.githubusers.data.retrofit
+package com.example.githubusers.data.remote.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

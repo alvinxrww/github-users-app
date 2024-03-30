@@ -1,8 +1,8 @@
-package com.example.githubusers.data.retrofit
+package com.example.githubusers.data.remote.retrofit
 
-import com.example.githubusers.data.response.UserDetailResponse
-import com.example.githubusers.data.response.UserItem
-import com.example.githubusers.data.response.UserResponse
+import com.example.githubusers.data.remote.response.UserDetailResponse
+import com.example.githubusers.data.remote.response.UserItem
+import com.example.githubusers.data.remote.response.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
 

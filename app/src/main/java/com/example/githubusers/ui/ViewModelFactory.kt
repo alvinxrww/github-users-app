@@ -2,7 +2,7 @@ package com.example.githubusers.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.githubusers.data.database.SettingPreferences
+import com.example.githubusers.data.local.database.SettingPreferences
 
 class ViewModelFactory(private val pref: SettingPreferences) : ViewModelProvider.NewInstanceFactory() {
 

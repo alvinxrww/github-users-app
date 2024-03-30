@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.githubusers.R
-import com.example.githubusers.data.database.FavoriteUser
-import com.example.githubusers.data.response.UserDetailResponse
+import com.example.githubusers.data.local.database.FavoriteUser
+import com.example.githubusers.data.remote.response.UserDetailResponse
 import com.example.githubusers.databinding.ActivityDetailsBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
