@@ -1,5 +1,6 @@
 package com.example.githubusers.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -87,6 +88,20 @@ class DetailsActivity : AppCompatActivity() {
                 favoriteButton.setImageResource(R.drawable.ic_favorite)
                 favoriteButton.setColorFilter(red, PorterDuff.Mode.SRC_IN)
             }
+        }
+
+        binding.shareButton.setOnClickListener {
+            val url = detailsViewModel.details.value?.htmlUrl
+
+            // Create the sharing Intent with the custom link
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, url)
+
+            val title = "Share via"
+
+            val chooserIntent = Intent.createChooser(shareIntent, title)
+            startActivity(chooserIntent)
         }
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this)

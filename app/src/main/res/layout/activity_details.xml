@@ -28,6 +28,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:maxImageSize="32dp" />
 
+        <ImageView
+            android:id="@+id/share_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/share_button"
+            android:src="@drawable/ic_share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxImageSize="32dp" />
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"

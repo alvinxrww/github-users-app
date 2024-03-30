@@ -11,4 +11,5 @@
     <string name="add_to_favorite_button">Add to favorite button</string>
     <string name="favorite_navigation">Go to favorites button</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="share_button">Share button</string>
 </resources>
