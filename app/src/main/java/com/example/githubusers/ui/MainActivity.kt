@@ -57,6 +57,11 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 
+        binding.themeButton.setOnClickListener {
+            val themeIntent = Intent(this@MainActivity, ThemeActivity::class.java)
+            startActivity(themeIntent)
+        }
+
         binding.favoritesButton.setOnClickListener {
             val favoritesIntent = Intent(this@MainActivity, FavoriteActivity::class.java)
             startActivity(favoritesIntent)
