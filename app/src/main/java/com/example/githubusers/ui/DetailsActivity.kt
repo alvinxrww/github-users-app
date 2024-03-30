@@ -1,8 +1,6 @@
 package com.example.githubusers.ui
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -62,13 +60,9 @@ class DetailsActivity : AppCompatActivity() {
             favoriteStatus = isFavorite
             val favoriteButton = binding.favoriteButton
             if (isFavorite) {
-                val red = Color.parseColor("#ED4956")
                 favoriteButton.setImageResource(R.drawable.ic_favorite)
-                favoriteButton.setColorFilter(red, PorterDuff.Mode.SRC_IN)
             } else {
-                val black = Color.parseColor("#000000")
                 favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
-                favoriteButton.setColorFilter(black, PorterDuff.Mode.SRC_IN)
             }
         }
 
@@ -79,14 +73,10 @@ class DetailsActivity : AppCompatActivity() {
 
             if (favoriteStatus) {
                 favoriteViewModel.delete(favoriteUser)
-                val black = Color.parseColor("#000000")
                 favoriteButton.setImageResource(R.drawable.ic_favorite_bordered)
-                favoriteButton.setColorFilter(black, PorterDuff.Mode.SRC_IN)
             } else {
                 favoriteViewModel.insert(favoriteUser)
-                val red = Color.parseColor("#ED4956")
                 favoriteButton.setImageResource(R.drawable.ic_favorite)
-                favoriteButton.setColorFilter(red, PorterDuff.Mode.SRC_IN)
             }
         }
 
