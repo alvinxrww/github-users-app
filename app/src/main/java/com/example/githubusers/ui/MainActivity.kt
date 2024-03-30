@@ -1,5 +1,6 @@
 package com.example.githubusers.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -54,6 +55,11 @@ class MainActivity : AppCompatActivity() {
                         false
                     }
                 }
+        }
+
+        binding.favoritesButton.setOnClickListener {
+            val favoritesIntent = Intent(this@MainActivity, FavoriteActivity::class.java)
+            startActivity(favoritesIntent)
         }
     }
 
