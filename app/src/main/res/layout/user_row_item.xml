@@ -22,7 +22,7 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:scaleType="centerCrop"
-            android:contentDescription="profile picture"
+            android:contentDescription="@string/profile_picture"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"

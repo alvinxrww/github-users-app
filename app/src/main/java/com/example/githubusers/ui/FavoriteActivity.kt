@@ -24,25 +24,8 @@ class FavoriteActivity : AppCompatActivity() {
             val items = arrayListOf<UserItem>()
             users.map {
                 val item = UserItem(
-                    gistsUrl = "",
-                    reposUrl = "",
-                    followingUrl = "",
-                    starredUrl = "",
                     login = it.username,
-                    followersUrl = "",
-                    type = "",
-                    url = "",
-                    subscriptionsUrl = "",
-                    score = 1.0,
-                    receivedEventsUrl = "",
                     avatarUrl = it.avatarUrl ?: "",
-                    eventsUrl = "",
-                    htmlUrl = "",
-                    siteAdmin = false,
-                    id = 1,
-                    gravatarId = "",
-                    nodeId = "",
-                    organizationsUrl = ""
                 )
                 items.add(item)
             }

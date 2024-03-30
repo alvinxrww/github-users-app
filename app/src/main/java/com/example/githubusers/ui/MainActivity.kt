@@ -26,9 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pref = SettingPreferences.getInstance(application.dataStore)
-        val themeViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
-            ThemeViewModel::class.java
-        )
+        val themeViewModel =
+            ViewModelProvider(this, ViewModelFactory(pref))[ThemeViewModel::class.java]
         themeViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

@@ -15,12 +15,11 @@ import com.example.githubusers.databinding.FragmentFollowBinding
 class FollowFragment : Fragment() {
     private val followViewModel: FollowViewModel by viewModels<FollowViewModel>()
     private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding!!
 
-    companion object {
-        const val ARG_POSITION = "position"
-        const val ARG_USERNAME = "username"
-    }
+//    sebagaimana pada dokumentasi developer android berikut:
+//    https://developer.android.com/topic/libraries/view-binding
+//    memang binding untuk fragment diambil dengan operator double bang
+    private val binding get() = _binding!!
 
     private var position = 1
     private var username = ""
@@ -75,5 +74,10 @@ class FollowFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    companion object {
+        const val ARG_POSITION = "position"
+        const val ARG_USERNAME = "username"
     }
 }

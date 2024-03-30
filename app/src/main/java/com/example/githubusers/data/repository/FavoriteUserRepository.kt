@@ -23,10 +23,6 @@ class FavoriteUserRepository(application: Application): ViewModel() {
     fun delete(favoriteUser: FavoriteUser) {
         executorService.execute { mFavoriteUserDao.delete(favoriteUser) }
     }
-    fun update(favoriteUser: FavoriteUser) {
-        executorService.execute { mFavoriteUserDao.update(favoriteUser) }
-    }
-
     fun getFavoriteUserByUsername(username: String): LiveData<FavoriteUser> {
         return mFavoriteUserDao.getFavoriteUserByUsername(username)
     }
