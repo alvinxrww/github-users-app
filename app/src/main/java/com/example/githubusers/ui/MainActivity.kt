@@ -7,12 +7,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubusers.data.local.database.SettingPreferences
-import com.example.githubusers.data.local.database.dataStore
 import com.example.githubusers.data.remote.response.UserItem
 import com.example.githubusers.databinding.ActivityMainBinding
 
@@ -24,17 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val pref = SettingPreferences.getInstance(application.dataStore)
-        val themeViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[ThemeViewModel::class.java]
-        themeViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
-            if (isDarkModeActive) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        }
 
         supportActionBar?.hide()
 
